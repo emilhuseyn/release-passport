@@ -1,6 +1,6 @@
 # Threat model: how a seller could try to keep the money or the authority
 
-Written before the code, as the track prompt asks, and updated to what was built. "Test" names a unit test in
+Written before the code, as the track prompt asks, and updated to what was built. The last column names a unit test in
 `contracts/release_passport/src/tests.rs` or `contracts/passport_wallet/src/lib.rs`, or a check run on testnet.
 
 | # | Seller attempt | What stops it | Test |
