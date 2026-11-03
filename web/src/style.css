@@ -1,0 +1,84 @@
+:root {
+  --bg: #f7f7f4;
+  --panel: #ffffff;
+  --ink: #1c1d1a;
+  --muted: #5f625a;
+  --line: #e3e3dc;
+  --ok: #166534;
+  --ok-bg: #e7f4ea;
+  --warn: #92400e;
+  --warn-bg: #fdf1dc;
+  --bad: #991b1b;
+  --bad-bg: #fbe5e4;
+  --unk: #374151;
+  --unk-bg: #eceef1;
+  --accent: #1f4f8f;
+  --radius: 10px;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #121311;
+    --panel: #1b1c1a;
+    --ink: #ecece6;
+    --muted: #a3a59c;
+    --line: #2e302b;
+    --ok: #6ee79a;
+    --ok-bg: #12291a;
+    --warn: #f5c36b;
+    --warn-bg: #2e2412;
+    --bad: #f59a94;
+    --bad-bg: #331616;
+    --unk: #c9ced6;
+    --unk-bg: #23262b;
+    --accent: #8db8f2;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); line-height: 1.5; }
+a { color: var(--accent); }
+code, .mono { font-family: ui-monospace, "Cascadia Code", Consolas, monospace; font-size: 0.88em; word-break: break-all; }
+.top { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; padding: 14px 20px; border-bottom: 1px solid var(--line); background: var(--panel); }
+.brand { display: flex; gap: 10px; align-items: center; font-weight: 700; color: var(--ink); text-decoration: none; }
+.mark { display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: 7px; background: var(--ok); color: #fff; }
+nav { display: flex; gap: 14px; flex-wrap: wrap; flex: 1; }
+nav a { color: var(--muted); text-decoration: none; font-weight: 500; }
+nav a.on { color: var(--ink); }
+main { max-width: 980px; margin: 0 auto; padding: 24px 16px 48px; }
+.foot { max-width: 980px; margin: 0 auto; padding: 16px; color: var(--muted); font-size: 0.85em; }
+h1 { font-size: 1.6rem; margin: 0 0 6px; }
+h2 { font-size: 1.15rem; margin: 28px 0 10px; }
+.lede { color: var(--muted); margin: 0 0 20px; max-width: 62ch; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px 18px; }
+.grid { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+.kv { display: grid; grid-template-columns: max-content 1fr; gap: 6px 16px; }
+.kv dt { color: var(--muted); }
+.kv dd { margin: 0; }
+.drop { border: 2px dashed var(--line); border-radius: var(--radius); padding: 36px 16px; text-align: center; background: var(--panel); cursor: pointer; }
+.drop.over { border-color: var(--accent); }
+.drop input { display: none; }
+.verdict { border-radius: var(--radius); padding: 16px 18px; margin: 16px 0; border: 1px solid var(--line); }
+.verdict .big { font-size: 1.5rem; font-weight: 800; letter-spacing: 0.02em; }
+.v-OK { background: var(--ok-bg); color: var(--ok); }
+.v-REVOKED { background: var(--warn-bg); color: var(--warn); }
+.v-COMPROMISED { background: var(--bad-bg); color: var(--bad); }
+.v-UNKNOWN, .v-MISMATCH { background: var(--unk-bg); color: var(--unk); }
+.verdict p { margin: 6px 0 0; color: var(--ink); }
+.tag { display: inline-block; padding: 1px 8px; border-radius: 99px; font-size: 0.8em; font-weight: 600; }
+table { width: 100%; border-collapse: collapse; font-size: 0.92em; }
+th, td { text-align: left; padding: 8px 6px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { color: var(--muted); font-weight: 600; }
+.btn { border: 1px solid var(--ink); background: var(--ink); color: var(--bg); padding: 8px 14px; border-radius: 8px; font-weight: 600; cursor: pointer; font: inherit; }
+.btn.ghost { background: transparent; color: var(--ink); border-color: var(--line); }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+form { display: grid; gap: 10px; max-width: 560px; }
+label { display: grid; gap: 4px; font-weight: 500; }
+input[type="text"], input[type="number"], textarea, select { font: inherit; padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--bg); color: var(--ink); }
+.muted { color: var(--muted); }
+.row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.notice { padding: 12px 14px; border-radius: 8px; background: var(--unk-bg); margin: 12px 0; }
+.error { color: var(--bad); }
+.stack > * + * { margin-top: 12px; }
+@media (max-width: 560px) { .kv { grid-template-columns: 1fr; } .kv dt { margin-top: 6px; } }
