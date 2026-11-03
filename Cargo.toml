@@ -1,6 +1,6 @@
 [workspace]
 resolver = "2"
-members = ["contracts/passport_wallet"]
+members = ["contracts/passport_wallet", "contracts/release_passport"]
 
 [workspace.dependencies]
 near-sdk = "=5.29.1"
