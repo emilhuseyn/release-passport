@@ -1,0 +1,9 @@
+[package]
+name = "passport_wallet"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+description = "Keyless wallet for one Release Passport: pays out only when its parent NFT contract asks. Raw host functions, no dependencies."
+
+[lib]
+crate-type = ["cdylib", "rlib"]
