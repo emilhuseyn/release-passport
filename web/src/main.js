@@ -168,7 +168,7 @@ async function pageVerify(app) {
     </label>
     <div class="row" style="margin-top:12px">
       <span class="muted">No file at hand?</span>
-      <button class="btn ghost" id="try-good" type="button">Check the published sample</button>
+      <button class="btn ghost" id="try-good" type="button">Check a published release</button>
       <button class="btn ghost" id="try-bad" type="button">Check a tampered copy</button>
     </div>
     <div id="result"></div>
@@ -208,8 +208,13 @@ async function pageVerify(app) {
     const blob = await (await fetch(`./samples/${name}`)).blob();
     check(new File([blob], name));
   };
-  app.querySelector("#try-good").onclick = () => sample("demo-tool-1.0.0.tgz");
+  app.querySelector("#try-good").onclick = () => sample("rp-verify.mjs");
   app.querySelector("#try-bad").onclick = () => sample("demo-tool-1.0.0-tampered.tgz");
+  // Deep links for judges: #/?try=good, #/?try=bad, #/?try=compromised run a sample check on load.
+  const tryIt = new URLSearchParams(location.hash.split("?")[1] || "").get("try");
+  if (tryIt === "good") sample("rp-verify.mjs");
+  if (tryIt === "bad") sample("demo-tool-1.0.0-tampered.tgz");
+  if (tryIt === "compromised") sample("demo-tool-1.0.0.tgz");
   drop.addEventListener("dragover", (e) => (e.preventDefault(), drop.classList.add("over")));
   drop.addEventListener("dragleave", () => drop.classList.remove("over"));
   drop.addEventListener("drop", (e) => {
@@ -402,7 +407,7 @@ async function pageArbiter(app) {
 // ---------- router ----------
 
 async function route() {
-  const h = location.hash.replace(/^#/, "") || "/";
+  const h = location.hash.replace(/^#/, "").split("?")[0] || "/";
   document.querySelectorAll("nav a").forEach((a) => a.classList.toggle("on", a.getAttribute("href") === `#${h}`));
   // A fresh container per navigation: a slow page that finishes late writes into a detached element, not over this one.
   const app = document.createElement("div");
